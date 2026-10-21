@@ -584,3 +584,13 @@ body.motion { overflow: hidden; }
   .index a { grid-template-columns: 44px 1fr 20px; }
   .index a em { display: none; }
 }
+
+/* ---------- The rail begins as the scroll cue ---------- */
+.nav.home .rail { opacity: 1; pointer-events: auto; transform: none; transition: none; will-change: transform; }
+.nav.home:not(.railed) .rail a { opacity: .8; }
+.nav.home:not(.railed) .rail a::before { transform: scaleX(0); }
+.hero .intro { align-items: flex-end; }
+.hero .intro p { max-width: 24ch; }
+.hero .cue { flex-direction: column; align-items: flex-end; gap: 10px; }
+.hero .cue span { font-size: 11px; letter-spacing: .18em; }
+@media (max-width: 900px) { .nav.home .rail { opacity: 0; pointer-events: none; } body.menu-open .nav.home .rail { opacity: 1; pointer-events: auto; } }

@@ -14,6 +14,9 @@
   const define = [...document.getElementById("define").children];
   const plateImg = document.getElementById("plateImg");
 
+  const rail = document.getElementById("rail");
+  // Distance from the rail's resting place in the bar to the intro row at the bottom of the screen.
+  function railDrop() { return innerHeight - 56 - rail.getBoundingClientRect().height - (rail.offsetTop + rail.offsetParent.offsetTop); }
   const IW = 9479, IH = 5352;
   const MX = 4622, MY = 3218, MS = 1654; // wall mark centre and size in photo pixels
   const PILLAR = 6195; // right edge of the concrete pillar beside the mark
@@ -79,6 +82,11 @@
     glow.setAttribute("opacity", (.22 * draw).toFixed(3));
 
     intro.style.opacity = (lit * (1 - span(p, .02, .14))).toFixed(3);
+    if (rail && innerWidth > 900) {
+      const k = out(span(p, .02, .3));
+      rail.style.transform = `translateY(${(railDrop() * (1 - k)).toFixed(1)}px)`;
+      rail.style.opacity = lit.toFixed(3);
+    } else if (rail) { rail.style.transform = ""; rail.style.opacity = ""; }
     intro.style.transform = `translateY(${-24 * span(p, .02, .14)}px)`;
     shade.style.opacity = (1 - dim).toFixed(3);
     vignette.style.opacity = dim.toFixed(3);
