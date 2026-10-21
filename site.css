@@ -594,3 +594,20 @@ body.motion { overflow: hidden; }
 .hero .cue { flex-direction: column; align-items: flex-end; gap: 10px; }
 .hero .cue span { font-size: 11px; letter-spacing: .18em; }
 @media (max-width: 900px) { .nav.home .rail { opacity: 0; pointer-events: none; } body.menu-open .nav.home .rail { opacity: 1; pointer-events: auto; } }
+
+/* ---------- Opening: one cue, centred ---------- */
+.hero .intro { justify-content: center; bottom: 40px; }
+.hero .cue { align-items: center; gap: 12px; opacity: 1; }
+.hero .cue span { font-size: 12px; letter-spacing: .22em; color: var(--plaster); }
+.hero .cue i { height: 72px; background: rgba(241, 238, 232, .22); }
+.hero .cue i::after { height: 36px; background: var(--plaster); animation-duration: 2s; }
+@keyframes cue { 0% { top: -40px; } 70%, 100% { top: 72px; } }
+.nav.home:not(.railed) .rail a { opacity: 1; }
+.nav .brand { transition: opacity .4s; }
+.hero .intro { bottom: 26px; }
+.hero .shade { background: linear-gradient(180deg, rgba(18,17,15,.45) 0%, rgba(18,17,15,0) 22%), linear-gradient(0deg, rgba(18,17,15,.8) 0%, rgba(18,17,15,.35) 18%, rgba(18,17,15,0) 36%); }
+.nav.home:not(.railed) .rail a, .hero .cue span { text-shadow: 0 1px 12px rgba(18,17,15,.6); }
+.hero .shade { background: linear-gradient(180deg, rgba(18,17,15,.45) 0%, rgba(18,17,15,0) 22%), linear-gradient(0deg, rgba(18,17,15,.92) 0%, rgba(18,17,15,.7) 18%, rgba(18,17,15,.3) 32%, rgba(18,17,15,0) 46%); }
+.hero .intro { bottom: 24px; }
+.hero .cue i { height: 56px; }
+@keyframes cue { 0% { top: -36px; } 70%, 100% { top: 56px; } }
