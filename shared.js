@@ -7,10 +7,20 @@
   const darkZones = [...document.querySelectorAll(".hero, .dark, .plate")];
 
   // ---------- Nav state ----------
+  // The rail appears once the office has been scrolled through, then tracks the section in view.
+  const sections = [...document.querySelectorAll("[data-section]")];
+  const railLinks = [...document.querySelectorAll("[data-rail]")];
   function navState() {
     const solid = hero ? hero.getBoundingClientRect().bottom <= 70 : true;
     nav.classList.toggle("solid", solid);
     nav.classList.toggle("dark", darkZones.some(z => { const r = z.getBoundingClientRect(); return r.top <= 31 && r.bottom > 31; }));
+    if (!sections.length) return;
+    const mid = innerHeight * .4;
+    let current = null;
+    sections.forEach(sec => { const r = sec.getBoundingClientRect(); if (r.top <= mid) current = sec.dataset.section; });
+    if (scrollY + innerHeight >= document.documentElement.scrollHeight - 2) current = sections[sections.length - 1].dataset.section;
+    railLinks.forEach(a => a.classList.toggle("on", a.dataset.rail === current));
+    nav.classList.toggle("railed", !!current);
   }
   addEventListener("scroll", navState, { passive: true });
   addEventListener("resize", navState);
@@ -39,6 +49,16 @@
   }));
   addEventListener("wheel", () => glideId++, { passive: true });
 
+  // ---------- Jobs: fold long groups ----------
+  document.querySelectorAll("[data-fold]").forEach(g => {
+    const rows = [...g.querySelectorAll("[data-job]")], btn = g.querySelector("[data-fold-toggle]");
+    if (rows.length <= 6) { btn.remove(); return; }
+    const fold = () => rows.forEach((r, i) => r.classList.toggle("folded", i >= 6 && !g.classList.contains("open")));
+    btn.addEventListener("click", () => { g.classList.toggle("open"); btn.textContent = g.classList.contains("open") ? "Fewer" : "All " + rows.length; fold(); });
+    g.unfold = () => { g.classList.add("open"); btn.textContent = "Fewer"; fold(); };
+    fold();
+  });
+
   // ---------- Reveals ----------
   const ob = new IntersectionObserver(es => es.forEach(en => {
     if (en.isIntersecting) { en.target.classList.add("in"); ob.unobserve(en.target); }
@@ -64,14 +84,16 @@
       const want = Object.fromEntries(selects.map(s => [s.dataset.filter, s.value]));
       const q = (search ? search.value : "").trim().toLowerCase();
       let n = 0;
+      const active = Object.values(want).some(Boolean) || q;
       rows.forEach(r => {
         const ok = Object.entries(want).every(([k, v]) => !v || r.dataset[k] === v) && (!q || r.dataset.text.includes(q));
         r.hidden = !ok; if (ok) n++;
       });
+      if (active) groups.forEach(g => g.unfold && g.unfold());
       groups.forEach(g => { g.hidden = ![...g.querySelectorAll("[data-job]")].some(r => !r.hidden); });
       if (count) count.textContent = n === rows.length ? `${n} open roles` : `${n} of ${rows.length} roles`;
       const p = new URLSearchParams(); Object.entries(want).forEach(([k, v]) => v && p.set(k, v)); if (q) p.set("q", q);
-      history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p : ""));
+      history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p : "") + location.hash);
     }
     const p = new URLSearchParams(location.search);
     selects.forEach(s => { if (p.get(s.dataset.filter)) s.value = p.get(s.dataset.filter); s.addEventListener("change", apply); });
