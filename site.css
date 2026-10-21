@@ -371,7 +371,9 @@ section.block.tight { padding-top: clamp(48px, 8vh, 96px); }
 .card:hover { background: var(--linen); }
 .card .logo { height: 44px; display: flex; align-items: center; margin-bottom: 24px; }
 .card .logo:has(img) { height: 76px; margin-bottom: 8px; }
+.card .logo:has(b) { height: 76px; margin-bottom: 8px; align-items: flex-start; }
 .card .logo img { max-height: 36px; max-width: 150px; width: auto; object-fit: contain; }
+.logo img.inv { filter: invert(1) brightness(.1); }
 .card .logo b { font-size: 22px; letter-spacing: -.02em; font-weight: 500; }
 .card .name { font-size: 22px; letter-spacing: -.02em; font-weight: 500; }
 .card p { margin-top: 8px; font-size: 15px; line-height: 1.5; color: var(--ink-2); flex: 1; }
