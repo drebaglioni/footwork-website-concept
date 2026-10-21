@@ -328,7 +328,7 @@ footer .fine a:hover { color: var(--ink); }
 .nav.dark .pitch:hover, .nav:not(.solid) .pitch:hover { background: var(--plaster); color: var(--ink); border-color: var(--plaster); }
 .nav li a[aria-current] { opacity: .55; }
 .nav .burger { display: none; background: none; border: 0; color: inherit; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer; padding: 8px 0; }
-.page-head { padding: calc(clamp(72px, 12vh, 140px) + 40px) var(--pad) 0; }
+.page-head { position: relative; padding: calc(clamp(72px, 12vh, 140px) + 40px) var(--pad) 0; }
 .page-head .head { margin-bottom: clamp(32px, 6vh, 64px); }
 .page-head h1 { font-size: clamp(40px, 6vw, 96px); line-height: .98; letter-spacing: -.035em; font-weight: 500; max-width: 14ch; }
 .page-head .lede { margin-top: 24px; font-size: clamp(18px, 1.4vw, 22px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
@@ -504,3 +504,52 @@ body.motion { overflow: hidden; }
   .form { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) { .people { grid-template-columns: 1fr; } .agents { grid-template-columns: 1fr; } }
+
+/* ---------- Round two: openers, layouts, jobs ---------- */
+.page-top { position: relative; padding: calc(64px + clamp(40px, 7vh, 72px)) var(--pad) 0; }
+.page-top .head { margin-bottom: 0; }
+.page-top .head .label a { color: var(--concrete); }
+.page-top .company-name { margin-top: clamp(24px, 4vh, 40px); font-size: clamp(40px, 6vw, 96px); line-height: .98; letter-spacing: -.035em; font-weight: 500; }
+.head.spaced { margin-top: clamp(64px, 10vh, 120px); }
+.plate.opener { height: 72vh; margin-top: 0; }
+.plate.opener img { top: 0; height: 100%; }
+.cols2 { margin-top: clamp(48px, 8vh, 96px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 64px); }
+.cols2 p { font-size: clamp(17px, 1.3vw, 20px); line-height: 1.55; color: var(--ink-2); max-width: 44ch; }
+.strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(16px, 2vw, 32px); list-style: none; }
+.strip .s { margin-top: 8px; font-size: 13px; color: var(--concrete); }
+.nbt p + h4 { margin-top: 6px; }
+.partners-row { grid-template-columns: 1fr 1fr; }
+.person.big figure { aspect-ratio: 1; }
+.person.big h3 { font-size: clamp(30px, 3vw, 46px); }
+.person.big p { font-size: 17px; max-width: 44ch; }
+.person .links { margin-top: 16px; display: flex; gap: 20px; }
+.agent { grid-template-columns: 56px 1fr; }
+.card { min-height: 160px; }
+.card .name { font-size: clamp(22px, 2vw, 28px); }
+.card.more { pointer-events: none; }
+.rows .job { grid-template-columns: 2.4fr 1.2fr 1.2fr 20px; }
+.job .tag { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--concrete); border-bottom: 1px solid var(--line); }
+.job .tag:hover { color: var(--ink); border-color: var(--ink); }
+.toolbar { position: sticky; top: 64px; z-index: 5; background: var(--plaster); padding: 16px 0 12px; margin-bottom: clamp(20px, 4vh, 36px); grid-template-columns: 2fr 1fr 1fr 1fr auto; align-items: center; }
+.toolbar .job-count { margin: 0; white-space: nowrap; padding-left: 8px; }
+.company-group header b a { border-bottom: 1px solid transparent; }
+.excerpt { margin: 0; max-width: 60ch; }
+.excerpt p { font-size: clamp(20px, 1.7vw, 26px); line-height: 1.45; letter-spacing: -.012em; }
+.excerpt footer { margin-top: 24px; display: flex; gap: 20px; align-items: baseline; font-size: 14px; }
+.feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 64px); align-items: center; }
+.feature .img { aspect-ratio: 16/10; overflow: hidden; background: var(--linen); }
+.feature .img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: filter .8s; }
+.feature:hover .img img { filter: none; }
+.feature .k { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--concrete); }
+.feature h2 { margin: 16px 0 24px; font-size: clamp(30px, 3.4vw, 52px); line-height: 1.05; letter-spacing: -.03em; font-weight: 500; }
+.feature .ulink { display: inline-flex; align-items: center; gap: 10px; }
+.event { grid-template-columns: 2fr 1fr 1fr; align-items: baseline; padding: 22px 0; }
+.event .when { padding: 0; }
+@media (max-width: 900px) {
+  .cols2, .partners-row, .feature { grid-template-columns: 1fr; }
+  .strip { grid-template-columns: 1fr 1fr; }
+  .toolbar { position: static; grid-template-columns: 1fr 1fr; }
+  .rows .job { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; gap: 6px; }
+  .plate.opener { height: 56vh; }
+}
