@@ -696,3 +696,22 @@ footer { padding-top: clamp(56px, 9vh, 96px); }
 @media (max-width: 900px) { .groups { grid-template-columns: 1fr; } .groups .job { grid-template-columns: 1fr 20px; } .groups .job .m { display: none; } }
 
 .toolbar { position: static; padding-top: 0; }
+
+/* ---------- Seams: one surface, soft tonal changes, elements that straddle the boundaries ---------- */
+/* The section rule draws itself in instead of standing as a wall. */
+.head { border-top: 0; position: relative; padding-top: 18px; }
+.head::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 1.3s var(--ease); }
+.head.in::before { transform: scaleX(1); }
+section.dark .head::before { background: var(--plaster); }
+/* The office fades into the page instead of ending on an edge. */
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 180px; background: linear-gradient(to bottom, rgba(241,238,232,0), var(--plaster)); pointer-events: none; z-index: 2; }
+/* The dark band is a slow dimming of the wall, not a box; the agent cards sit on the seam. */
+section.portfolio { background: linear-gradient(to bottom, var(--plaster) 0, var(--ink) 240px, var(--ink) calc(100% - 160px), var(--plaster) 100%); padding-top: calc(240px + clamp(24px, 4vh, 48px)); padding-bottom: calc(160px + clamp(16px, 3vh, 32px)); }
+section.portfolio.grain::after { background-blend-mode: multiply; }
+section.team { padding-bottom: 0; }
+.fleet { position: relative; z-index: 3; margin-bottom: -210px; padding-bottom: 0; }
+/* The latest post's image rises into the end of Jobs. */
+.feature { position: relative; z-index: 2; }
+.feature .img { box-shadow: 0 30px 60px -30px rgba(18,17,15,.45); }
+section.writing .head { position: relative; z-index: 3; }
+@media (max-width: 900px) { .fleet { margin-bottom: -90px; } section.portfolio { padding-top: calc(240px + 24px); } }
