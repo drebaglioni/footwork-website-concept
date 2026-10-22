@@ -51,9 +51,9 @@
 
   // ---------- Jobs: fold long groups ----------
   document.querySelectorAll("[data-fold]").forEach(g => {
-    const rows = [...g.querySelectorAll("[data-job]")], btn = g.querySelector("[data-fold-toggle]");
-    if (rows.length <= 6) { btn.remove(); return; }
-    const fold = () => rows.forEach((r, i) => r.classList.toggle("folded", i >= 6 && !g.classList.contains("open")));
+    const rows = [...g.querySelectorAll("[data-job]")], btn = g.querySelector("[data-fold-toggle]"), keep = +g.dataset.fold || 6;
+    if (rows.length <= keep) { btn.remove(); return; }
+    const fold = () => rows.forEach((r, i) => r.classList.toggle("folded", i >= keep && !g.classList.contains("open")));
     btn.addEventListener("click", () => { g.classList.toggle("open"); btn.textContent = g.classList.contains("open") ? "Fewer" : "All " + rows.length; fold(); });
     g.unfold = () => { g.classList.add("open"); btn.textContent = "Fewer"; fold(); };
     fold();
