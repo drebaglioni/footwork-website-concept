@@ -637,3 +637,26 @@ body.motion { overflow: hidden; }
   .fleet.in.settled .fcard { animation: none; }
 }
 @media (max-width: 900px) { .fleet { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; } .fcard { padding: 20px 10px 14px; } .fcard img { width: 64px; height: 64px; } }
+
+/* ---------- Small magic ---------- */
+[data-count] { font-variant-numeric: tabular-nums; }
+.portfolio { position: relative; overflow: hidden; }
+.portfolio .follower { position: absolute; left: 0; top: 0; width: 300px; height: 300px; color: var(--plaster); opacity: 0; pointer-events: none; transition: opacity .8s var(--ease); will-change: transform; z-index: 0; }
+.portfolio .follower.on { opacity: .07; }
+.portfolio .follower use, .portfolio .follower path { stroke-width: 1.2; }
+.portfolio .head, .portfolio .statement, .portfolio .index { position: relative; z-index: 2; }
+.portfolio.grain::after { z-index: 1; }
+.person.big figure img { transition: filter .25s linear, transform 1.4s var(--ease); }
+.person.big:hover figure img { filter: none !important; }
+footer .big { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s var(--ease); }
+footer.in .big { clip-path: inset(0 0 0 0); }
+.feature .img img { transition: filter 1.6s var(--ease); }
+.feature.r:not(.in) .img img { filter: grayscale(1) blur(14px) brightness(.45); }
+.feature.r.in .img img { filter: grayscale(1); }
+.feature.r.in:hover .img img { filter: none; }
+.contact .mail.typing::after { animation: caret 1s steps(2) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+.fleet.in .fcard:has(+ .fcard:hover) { translate: -10px 0; }
+.fleet.in .fcard:hover + .fcard { translate: 10px 0; }
+.fcard { transition: transform 1.1s var(--ease), opacity .8s var(--ease), box-shadow .5s var(--ease), filter .5s var(--ease), translate .5s var(--ease); }
+@media (prefers-reduced-motion: reduce) { footer .big { clip-path: none; transition: none; } .feature.r .img img { filter: grayscale(1); } .portfolio .follower { display: none; } }

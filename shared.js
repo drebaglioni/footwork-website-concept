@@ -59,6 +59,51 @@
     fold();
   });
 
+  // ---------- Numbers count up as they arrive ----------
+  const counters = [...document.querySelectorAll("[data-count]")];
+  if (counters.length) {
+    const run = el => {
+      const to = +el.dataset.count, t0 = performance.now(), ms = 1100;
+      (function step(now) {
+        const k = 1 - Math.pow(1 - clamp((now - t0) / ms), 3);
+        el.textContent = Math.round(to * k);
+        if (k < 1) requestAnimationFrame(step);
+      })(t0);
+    };
+    const co = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { reduce ? null : run(en.target); co.unobserve(en.target); } }), { rootMargin: "0px 0px -10% 0px" });
+    counters.forEach(el => co.observe(el));
+  }
+
+  // ---------- The mark follows the cursor across the concrete ----------
+  const follower = document.getElementById("follower");
+  if (follower && matchMedia("(hover: hover)").matches && !reduce) {
+    const sec = follower.parentElement;
+    let tx = 0, ty = 0, x = 0, y = 0, on = false, raf = 0;
+    sec.addEventListener("mousemove", e => { const r = sec.getBoundingClientRect(); tx = e.clientX - r.left; ty = e.clientY - r.top; if (!on) { on = true; x = tx; y = ty; follower.classList.add("on"); } if (!raf) raf = requestAnimationFrame(tick); });
+    sec.addEventListener("mouseleave", () => { on = false; follower.classList.remove("on"); });
+    function tick() { raf = 0; x += (tx - x) * .08; y += (ty - y) * .08; follower.style.transform = `translate(${x - 150}px, ${y - 150}px)`; if (Math.abs(tx - x) + Math.abs(ty - y) > .5) raf = requestAnimationFrame(tick); }
+  }
+
+  // ---------- Partner portraits take colour as they pass the middle ----------
+  const portraits = [...document.querySelectorAll(".person.big figure img")];
+  if (portraits.length && !reduce) {
+    const tint = () => portraits.forEach(img => {
+      const r = img.getBoundingClientRect(), c = r.top + r.height / 2, d = Math.abs(c - innerHeight * .5) / (innerHeight * .45);
+      img.style.filter = `grayscale(${clamp(d).toFixed(3)})`;
+    });
+    addEventListener("scroll", tint, { passive: true }); addEventListener("resize", tint); tint();
+  }
+
+  // ---------- The email address writes itself, once ----------
+  const mail = document.querySelector("[data-type]");
+  if (mail && !reduce) {
+    const full = mail.dataset.type; mail.textContent = ""; mail.classList.add("typing");
+    new IntersectionObserver((es, o) => es.forEach(en => {
+      if (!en.isIntersecting) return; o.disconnect();
+      let i = 0; (function next() { mail.textContent = full.slice(0, ++i); if (i < full.length) setTimeout(next, 42 + Math.random() * 40); else mail.classList.remove("typing"); })();
+    }), { rootMargin: "0px 0px -20% 0px" }).observe(mail);
+  }
+
   // ---------- Reveals ----------
   const ob = new IntersectionObserver(es => es.forEach(en => {
     if (en.isIntersecting) { en.target.classList.add("in"); ob.unobserve(en.target); }
