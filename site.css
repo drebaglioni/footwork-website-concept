@@ -694,3 +694,5 @@ section.block.tight { padding-top: clamp(40px, 6vh, 72px); }
 .contact.centred .addr { margin-top: 20px; }
 footer { padding-top: clamp(56px, 9vh, 96px); }
 @media (max-width: 900px) { .groups { grid-template-columns: 1fr; } .groups .job { grid-template-columns: 1fr 20px; } .groups .job .m { display: none; } }
+
+.toolbar { position: static; padding-top: 0; }
