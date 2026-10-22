@@ -632,5 +632,8 @@ body.motion { overflow: hidden; }
 .fcard em { font-style: normal; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--stone); margin-top: 10px; }
 .fleet.in .fcard:hover { animation-play-state: paused; transform: translateY(calc(var(--y) - 10px)) rotate(0deg) scale(1.04); box-shadow: 0 2px 0 rgba(18, 17, 15, .04), 0 28px 50px -22px rgba(18, 17, 15, .5); z-index: 2; }
 .fleet.in:has(.fcard:hover) .fcard:not(:hover) { filter: saturate(.6); }
-@media (prefers-reduced-motion: reduce) { .fcard { transition: none; animation: none !important; transform: none !important; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .fcard { transform: translateY(var(--y)) rotate(var(--t)); transition: opacity .6s ease; transition-delay: calc(var(--i) * 60ms); }
+  .fleet.in.settled .fcard { animation: none; }
+}
 @media (max-width: 900px) { .fleet { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; } .fcard { padding: 20px 10px 14px; } .fcard img { width: 64px; height: 64px; } }

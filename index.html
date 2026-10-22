@@ -9,7 +9,7 @@
 <link rel="icon" href="https://cdn.prod.website-files.com/602c4c04494b42a3cb1d3353/6048dc099cece89a9bf9162c_favicon.png">
 <link rel="preload" href="https://cdn.prod.website-files.com/602c4c04494b42a3cb1d3353/6037badfa3cadf7279bfe2da_apercu-regular-pro.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="https://cdn.prod.website-files.com/602c4c04494b42a3cb1d3353/6037bb0457cc2f453f9cc7bd_apercu-medium-pro.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/footwork-website-concept/site.css">
+<link rel="stylesheet" href="/footwork-website-concept/site.css?v=994ff904">
 <link rel="preload" href="/footwork-website-concept/assets/office.jpg" as="image">
 <script>window.FW_BASE = "/footwork-website-concept/";</script>
 </head>
@@ -146,6 +146,15 @@
       </article></div>
     <div class="head r spaced"><div class="label">Agents</div></div>
     <div class="fleet" id="fleet"><div class="fcard" style="--i:0;--t:-3deg;--y:0px;--f:6s"><img src="/footwork-website-concept/assets/agents/fergie.png" alt=""><b>Fergie</b><span>Deal intelligence</span><em>Footwork</em></div><div class="fcard" style="--i:1;--t:2deg;--y:18px;--f:7s"><img src="/footwork-website-concept/assets/agents/pep.png" alt=""><b>Pep</b><span>Deal briefs</span><em>Footwork</em></div><div class="fcard" style="--i:2;--t:-1.5deg;--y:6px;--f:8s"><img src="/footwork-website-concept/assets/agents/mou.png" alt=""><b>Mou</b><span>Thesis feedback</span><em>Footwork</em></div><div class="fcard" style="--i:3;--t:3deg;--y:24px;--f:9s"><img src="/footwork-website-concept/assets/agents/footy.png" alt=""><b>Footy</b><span>Founder guide</span><em>Footwork</em></div><div class="fcard" style="--i:4;--t:-2.5deg;--y:10px;--f:10s"><img src="/footwork-website-concept/assets/agents/biscotti.png" alt=""><b>Biscotti</b><span>Chief of Staff</span><em>Andrea</em></div><div class="fcard" style="--i:5;--t:1deg;--y:0px;--f:6s"><img src="/footwork-website-concept/assets/agents/pasta.png" alt=""><b>Pasta</b><span>Editor</span><em>Andrea</em></div><div class="fcard" style="--i:6;--t:2.5deg;--y:16px;--f:7s"><img src="/footwork-website-concept/assets/agents/gnocchi.png" alt=""><b>Gnocchi</b><span>Engineer</span><em>Andrea</em></div><div class="fcard" style="--i:7;--t:-2deg;--y:28px;--f:8s"><img src="/footwork-website-concept/assets/agents/tartufo.png" alt=""><b>Tartufo</b><span>Diligence</span><em>Andrea</em></div><div class="fcard" style="--i:8;--t:1.5deg;--y:8px;--f:9s"><img src="/footwork-website-concept/assets/agents/sunray.png" alt=""><b>Tiramisu</b><span>Motion Designer</span><em>Andrea</em></div><div class="fcard" style="--i:9;--t:-3deg;--y:20px;--f:10s"><img src="/footwork-website-concept/assets/agents/alma.png" alt=""><b>Alma</b><span>Chief of Staff</span><em>Katherine</em></div><div class="fcard" style="--i:10;--t:2deg;--y:4px;--f:6s"><img src="/footwork-website-concept/assets/agents/arrow.png" alt=""><b>Arrow</b><span>Office operations</span><em>Bruna</em></div><div class="fcard" style="--i:11;--t:-1deg;--y:14px;--f:7s"><img src="/footwork-website-concept/assets/agents/cedar.png" alt=""><b>Cedar</b><span>Writing partner</span><em>Nikhil</em></div><div class="fcard" style="--i:12;--t:3deg;--y:22px;--f:8s"><img src="/footwork-website-concept/assets/agents/spruce.png" alt=""><b>Spruce</b><span>Second brain</span><em>Nikhil</em></div></div>
+    <script>
+    (function () {
+      var f = document.getElementById("fleet"), n = f.children.length;
+      function deal() { f.classList.add("in"); setTimeout(function () { f.classList.add("settled"); }, 1100 + n * 70); }
+      if (!("IntersectionObserver" in window)) return deal();
+      new IntersectionObserver(function (es, o) { es.forEach(function (en) { if (en.isIntersecting) { deal(); o.disconnect(); } }); }, { rootMargin: "0px 0px -15% 0px" }).observe(f);
+      setTimeout(function () { if (!f.classList.contains("in") && f.getBoundingClientRect().top < innerHeight) deal(); }, 2500);
+    })();
+    </script>
   </section>
 
   <section class="block grain dark" id="portfolio" data-section="portfolio"><div class="head r "><div class="label">Portfolio</div></div>
@@ -233,7 +242,7 @@
     <span class="links"><a href="/footwork-website-concept/brand/">Brand</a> · <a href="mailto:hello@footwork.vc">hello@footwork.vc</a> · <a href="#" id="egg" aria-label="In motion"><svg viewBox="0 0 40 40"><use href="#mark-small"/></svg></a> © 2026</span>
   </div>
 </footer>
-<script src="/footwork-website-concept/shared.js"></script>
-<script src="/footwork-website-concept/hero.js"></script>
+<script src="/footwork-website-concept/shared.js?v=2d609fe5"></script>
+<script src="/footwork-website-concept/hero.js?v=2556a643"></script>
 </body>
 </html>

@@ -59,15 +59,6 @@
     fold();
   });
 
-  // ---------- The fleet deals in once, then drifts ----------
-  const fleet = document.getElementById("fleet");
-  if (fleet) new IntersectionObserver((es, o) => es.forEach(en => {
-    if (!en.isIntersecting) return;
-    fleet.classList.add("in");
-    setTimeout(() => fleet.classList.add("settled"), 1100 + fleet.children.length * 70);
-    o.unobserve(fleet);
-  }), { rootMargin: "0px 0px -15% 0px" }).observe(fleet);
-
   // ---------- Reveals ----------
   const ob = new IntersectionObserver(es => es.forEach(en => {
     if (en.isIntersecting) { en.target.classList.add("in"); ob.unobserve(en.target); }
@@ -140,7 +131,7 @@
     if (document.body.classList.contains("motion")) { document.body.classList.remove("motion"); return; }
     if (!motionLoaded) {
       motionLoaded = true;
-      const s = document.createElement("script"); s.src = window.FW_BASE + "motion.js"; s.onload = () => document.body.classList.add("motion"); document.body.appendChild(s);
+      const s = document.createElement("script"); s.src = window.FW_BASE + "motion.js?v=efe12500"; s.onload = () => document.body.classList.add("motion"); document.body.appendChild(s);
     } else document.body.classList.add("motion");
   }
 })();
