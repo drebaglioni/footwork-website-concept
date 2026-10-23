@@ -83,12 +83,7 @@
     glow.setAttribute("opacity", (.22 * draw).toFixed(3));
 
     intro.style.opacity = (lit * (1 - span(p, .02, .14))).toFixed(3);
-    if (rail && innerWidth > 900) {
-      const k = out(span(p, .02, .3));
-      rail.style.transform = `translateY(${(railDrop() * (1 - k)).toFixed(1)}px)`;
-      rail.style.opacity = lit.toFixed(3);
-      brand.style.opacity = k.toFixed(3);
-    } else if (rail) { rail.style.transform = ""; rail.style.opacity = ""; brand.style.opacity = ""; }
+
     intro.style.transform = `translateY(${-24 * span(p, .02, .14)}px)`;
     shade.style.opacity = (1 - dim).toFixed(3);
     vignette.style.opacity = dim.toFixed(3);

@@ -715,3 +715,21 @@ section.team { padding-bottom: 0; }
 .feature .img { box-shadow: 0 30px 60px -30px rgba(18,17,15,.45); }
 section.writing .head { position: relative; z-index: 3; }
 @media (max-width: 900px) { .fleet { margin-bottom: -90px; } section.portfolio { padding-top: calc(240px + 24px); } }
+
+/* ---------- Labels start in the bar; the cue is the only thing at the bottom ---------- */
+.nav.home .rail { opacity: 1; transform: none; pointer-events: auto; }
+.nav.home .rail a { opacity: .55; }
+.nav.home .rail a.on { opacity: 1; }
+.nav .brand { opacity: 1 !important; }
+.hero .cue { gap: 14px; }
+.hero .cue span { font-size: 12px; letter-spacing: .26em; }
+.hero .cue i { height: 96px; background: rgba(241, 238, 232, .18); }
+.hero .cue i::after { height: 48px; }
+@keyframes cue { 0% { top: -48px; } 70%, 100% { top: 96px; } }
+.hero .shade { background: linear-gradient(180deg, rgba(18,17,15,.5) 0%, rgba(18,17,15,0) 20%), linear-gradient(0deg, rgba(18,17,15,.85) 0%, rgba(18,17,15,.35) 16%, rgba(18,17,15,0) 32%); }
+/* ---------- Fades that take half a screen ---------- */
+.hero::after { height: 46vh; background: linear-gradient(to bottom, rgba(241,238,232,0) 0%, rgba(241,238,232,.35) 45%, var(--plaster) 100%); }
+section.portfolio { background: linear-gradient(to bottom, var(--plaster) 0, var(--ink) 48vh, var(--ink) calc(100% - 42vh), var(--plaster) 100%); padding-top: calc(48vh + clamp(16px, 3vh, 32px)); padding-bottom: calc(42vh + clamp(16px, 3vh, 32px)); }
+.fleet { margin-bottom: -30vh; }
+section.jobs { padding-top: 0; }
+@media (max-width: 900px) { .fleet { margin-bottom: -16vh; } section.portfolio { padding-top: calc(48vh + 16px); } }
