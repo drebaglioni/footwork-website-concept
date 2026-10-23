@@ -746,3 +746,15 @@ section.jobs { padding-top: 0; }
 .hero .cue i::after { height: 18px; }
 @keyframes cue { 0% { top: -18px; } 70%, 100% { top: 36px; } }
 .hero .intro { bottom: 32px; }
+
+/* ---------- Cue as the section motif: rule, then label ---------- */
+.hero .intro { justify-content: flex-start; bottom: 34px; }
+.hero .cue { flex-direction: column; align-items: flex-start; gap: 12px; padding: 0; background: none; border-radius: 0; -webkit-backdrop-filter: none; backdrop-filter: none; width: 160px; }
+.hero .cue i { position: relative; width: 100%; height: 3px; background: rgba(241, 238, 232, .35); transform: scaleX(0); transform-origin: left; animation: cue-rule 1.2s var(--ease) .6s forwards; overflow: hidden; }
+.hero .cue i::after { content: ""; position: absolute; top: 0; left: -24px; width: 24px; height: 3px; background: var(--plaster); animation: cue-tick 2.2s var(--ease) 1.8s infinite; }
+.hero .cue span { font-size: 12px; letter-spacing: .18em; color: var(--plaster); text-shadow: 0 1px 10px rgba(18,17,15,.6); opacity: 0; animation: cue-fade .8s var(--ease) 1.2s forwards; }
+@keyframes cue-rule { to { transform: scaleX(1); } }
+@keyframes cue-tick { 0% { left: -24px; } 60%, 100% { left: 100%; } }
+@keyframes cue-fade { to { opacity: 1; } }
+.hero .shade { background: linear-gradient(180deg, rgba(18,17,15,.5) 0%, rgba(18,17,15,0) 20%), linear-gradient(0deg, rgba(18,17,15,.88) 0%, rgba(18,17,15,.4) 16%, rgba(18,17,15,0) 32%); }
+@media (prefers-reduced-motion: reduce) { .hero .cue i { transform: none; animation: none; } .hero .cue i::after { animation: none; left: 0; } .hero .cue span { opacity: 1; animation: none; } }
