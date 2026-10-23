@@ -733,3 +733,16 @@ section.portfolio { background: linear-gradient(to bottom, var(--plaster) 0, var
 .fleet { margin-bottom: -30vh; }
 section.jobs { padding-top: 0; }
 @media (max-width: 900px) { .fleet { margin-bottom: -16vh; } section.portfolio { padding-top: calc(48vh + 16px); } }
+/* The cue sits in its own dark well so it reads over the sofa. */
+.hero .intro { bottom: 28px; }
+.hero .cue { padding: 14px 22px 0; border-radius: 999px; background: rgba(18, 17, 15, .58); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); gap: 10px; }
+.hero .cue span { font-size: 12px; letter-spacing: .28em; color: var(--plaster); text-shadow: none; }
+.hero .cue i { height: 44px; background: rgba(241, 238, 232, .25); }
+.hero .cue i::after { height: 22px; }
+@keyframes cue { 0% { top: -22px; } 70%, 100% { top: 44px; } }
+.hero .shade { background: linear-gradient(180deg, rgba(18,17,15,.5) 0%, rgba(18,17,15,0) 20%), linear-gradient(0deg, rgba(18,17,15,.9) 0%, rgba(18,17,15,.45) 18%, rgba(18,17,15,0) 36%); }
+.hero .cue { padding: 16px 24px 18px; gap: 12px; }
+.hero .cue i { height: 36px; }
+.hero .cue i::after { height: 18px; }
+@keyframes cue { 0% { top: -18px; } 70%, 100% { top: 36px; } }
+.hero .intro { bottom: 32px; }
