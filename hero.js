@@ -9,6 +9,7 @@
   const glow = document.getElementById("markGlow");
   const fadeStop = document.getElementById("fadeStop");
   const intro = document.getElementById("intro");
+  const peek = document.getElementById("peek");
   const shade = document.getElementById("shade");
   const vignette = document.getElementById("vignette");
   const define = [...document.getElementById("define").children];
@@ -31,7 +32,7 @@
   const out = t => 1 - Math.pow(1 - t, 3);
 
   function boxes() {
-    const w = innerWidth, h = innerHeight, a = w / h;
+    const w = innerWidth, h = hero.querySelector(".stage").clientHeight, a = w / h;
     let W0, H0;
     if (a > IW / IH) { W0 = IW; H0 = IW / a; } else { H0 = IH; W0 = IH * a; }
     const start = { x: (IW - W0) / 2, y: (IH - H0) / 2, w: W0, h: H0 };
@@ -83,6 +84,7 @@
     glow.setAttribute("opacity", (.22 * draw).toFixed(3));
 
     intro.style.opacity = (lit * (1 - span(p, .02, .14))).toFixed(3);
+    peek.style.opacity = (1 - span(p, .8, .95)).toFixed(3);
 
     intro.style.transform = `translateY(${-24 * span(p, .02, .14)}px)`;
     shade.style.opacity = (1 - dim).toFixed(3);

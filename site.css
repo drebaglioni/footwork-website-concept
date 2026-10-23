@@ -768,3 +768,12 @@ section.jobs { padding-top: 0; }
 .hero .intro { bottom: 36px; }
 .hero .shade { background: linear-gradient(180deg, rgba(18,17,15,.5) 0%, rgba(18,17,15,0) 20%), linear-gradient(0deg, rgba(18,17,15,.92) 0%, rgba(18,17,15,.5) 16%, rgba(18,17,15,0) 34%); }
 @media (prefers-reduced-motion: reduce) { .hero .cue i::after { animation: none; top: 0; } }
+
+/* ---------- The next section shows under the office from the first frame ---------- */
+.hero { background: var(--plaster); }
+.hero .stage { height: 88vh; height: 88svh; }
+.hero .peek { position: sticky; top: 88vh; top: 88svh; height: 12vh; height: 12svh; min-height: 84px; background: var(--plaster); padding: 0 var(--gutter); z-index: 3; overflow: hidden; }
+.hero .peek .head { margin: 22px 0 0; padding-top: 16px; }
+.hero .peek .head::before { transform: scaleX(1); }
+.hero::after { display: none; }
+.hero .intro { bottom: 28px; }
