@@ -9,7 +9,6 @@
   const glow = document.getElementById("markGlow");
   const fadeStop = document.getElementById("fadeStop");
   const intro = document.getElementById("intro");
-  const peek = document.getElementById("peek");
   const shade = document.getElementById("shade");
   const vignette = document.getElementById("vignette");
   const define = [...document.getElementById("define").children];
@@ -84,7 +83,6 @@
     glow.setAttribute("opacity", (.22 * draw).toFixed(3));
 
     intro.style.opacity = (lit * (1 - span(p, .02, .14))).toFixed(3);
-    peek.style.opacity = (1 - span(p, .8, .95)).toFixed(3);
 
     intro.style.transform = `translateY(${-24 * span(p, .02, .14)}px)`;
     shade.style.opacity = (1 - dim).toFixed(3);

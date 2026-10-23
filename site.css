@@ -769,11 +769,18 @@ section.jobs { padding-top: 0; }
 .hero .shade { background: linear-gradient(180deg, rgba(18,17,15,.5) 0%, rgba(18,17,15,0) 20%), linear-gradient(0deg, rgba(18,17,15,.92) 0%, rgba(18,17,15,.5) 16%, rgba(18,17,15,0) 34%); }
 @media (prefers-reduced-motion: reduce) { .hero .cue i::after { animation: none; top: 0; } }
 
-/* ---------- The next section shows under the office from the first frame ---------- */
-.hero { background: var(--plaster); }
-.hero .stage { height: 88vh; height: 88svh; }
-.hero .peek { position: sticky; top: 88vh; top: 88svh; height: 12vh; height: 12svh; min-height: 84px; background: var(--plaster); padding: 0 var(--gutter); z-index: 3; overflow: hidden; }
-.hero .peek .head { margin: 22px 0 0; padding-top: 16px; }
-.hero .peek .head::before { transform: scaleX(1); }
-.hero::after { display: none; }
-.hero .intro { bottom: 28px; }
+/* ---------- Cue: neon, thicker, pulsing; bottom centre ---------- */
+:root { --neon: #c6ff3a; }
+.hero .intro { justify-content: center; bottom: 30px; }
+.hero .cue { align-items: center; gap: 10px; color: var(--neon); }
+.hero .cue span { color: var(--neon); letter-spacing: .26em; text-shadow: 0 0 14px rgba(198, 255, 58, .55); animation: cue-pulse 2.2s ease-in-out infinite; }
+.hero .cue i { width: 2px; height: 64px; margin: 0; background: rgba(198, 255, 58, .22); box-shadow: 0 0 10px rgba(198, 255, 58, .25); }
+.hero .cue i::after { width: 2px; height: 32px; top: -32px; background: var(--neon); box-shadow: 0 0 12px rgba(198, 255, 58, .9); animation: cue-fall 1.8s var(--ease) infinite; }
+@keyframes cue-fall { 0% { top: -32px; } 65%, 100% { top: 64px; } }
+.hero .cue .arrow { width: 18px; height: 18px; margin-top: -6px; filter: drop-shadow(0 0 8px rgba(198, 255, 58, .8)); animation: cue-pulse 2.2s ease-in-out infinite; }
+@keyframes cue-pulse { 0%, 100% { opacity: .75; transform: translateY(0); } 50% { opacity: 1; transform: translateY(4px); } }
+@media (prefers-reduced-motion: reduce) { .hero .cue span, .hero .cue .arrow { animation: none; opacity: 1; } .hero .cue i::after { animation: none; top: 0; } }
+.hero .cue span { font-size: 13px; font-weight: 500; }
+.hero .cue i { width: 3px; }
+.hero .cue i::after { width: 3px; }
+.hero .cue .arrow { width: 22px; height: 22px; }
