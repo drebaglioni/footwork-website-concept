@@ -758,3 +758,13 @@ section.jobs { padding-top: 0; }
 @keyframes cue-fade { to { opacity: 1; } }
 .hero .shade { background: linear-gradient(180deg, rgba(18,17,15,.5) 0%, rgba(18,17,15,0) 20%), linear-gradient(0deg, rgba(18,17,15,.88) 0%, rgba(18,17,15,.4) 16%, rgba(18,17,15,0) 32%); }
 @media (prefers-reduced-motion: reduce) { .hero .cue i { transform: none; animation: none; } .hero .cue i::after { animation: none; left: 0; } .hero .cue span { opacity: 1; animation: none; } }
+
+/* ---------- Cue: word, then a line that falls ---------- */
+.hero .cue { width: auto; gap: 14px; align-items: flex-start; }
+.hero .cue span { opacity: 1; animation: none; font-size: 12px; letter-spacing: .24em; }
+.hero .cue i { width: 1px; height: 88px; background: rgba(241, 238, 232, .28); transform: none; animation: none; overflow: hidden; margin-left: 1px; }
+.hero .cue i::after { content: ""; position: absolute; left: 0; top: -44px; width: 1px; height: 44px; background: var(--plaster); animation: cue-fall 2.2s var(--ease) infinite; }
+@keyframes cue-fall { 0% { top: -44px; } 65%, 100% { top: 88px; } }
+.hero .intro { bottom: 36px; }
+.hero .shade { background: linear-gradient(180deg, rgba(18,17,15,.5) 0%, rgba(18,17,15,0) 20%), linear-gradient(0deg, rgba(18,17,15,.92) 0%, rgba(18,17,15,.5) 16%, rgba(18,17,15,0) 34%); }
+@media (prefers-reduced-motion: reduce) { .hero .cue i::after { animation: none; top: 0; } }
